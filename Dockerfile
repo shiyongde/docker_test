@@ -33,10 +33,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN wget --quiet https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh && \
-    /bin/bash Anaconda2-4.2.0-Linux-x86_64.sh -b -p /opt/conda && \                                 
-    rm Anaconda2-4.2.0-Linux-x86_64.sh && \                                                         
-    /opt/conda/bin/conda install --yes conda==4.2.0
-
+    /bin/bash Anaconda2-4.2.0-Linux-x86_64.sh -b -p /opt/conda                                                                                        
+    #/opt/conda/bin/conda install --yes conda==4.2.0
+    #rm Anaconda2-4.2.0-Linux-x86_64.sh && \  
 ENV PATH /opt/conda/bin:$PATH
 
 # change default encoding
