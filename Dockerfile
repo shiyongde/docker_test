@@ -84,13 +84,35 @@ RUN update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-4.8 30 && \
 # Clone the Caffe repo 
 RUN cd /opt && git clone https://github.com/BVLC/caffe.git
 
+
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  cmake \
+  git \
+  pkg-config \
+  libprotobuf-dev \
+  libleveldb-dev \
+  libsnappy-dev \
+  libhdf5-serial-dev \
+  protobuf-compiler \
+  libatlas-base-dev \
+  libboost-all-dev\
+  libgflags-dev \
+  libgoogle-glog-dev \
+  liblmdb-dev \
+  python-pip \
+   python-dev \
+   python-numpy \
+   python-scipy \
+  libopencv-dev
+
 # Glog 
-RUN cd /opt && wget https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz && \
-  tar zxvf glog-0.3.3.tar.gz && \
-  cd /opt/glog-0.3.3 && \
-  ./configure && \
-  make && \
-  make install
+#RUN cd /opt && wget https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz && \
+#  tar zxvf glog-0.3.3.tar.gz && \
+#  cd /opt/glog-0.3.3 && \
+#  ./configure && \
+#  make && \
+#  make install
 
 # Workaround for error loading libglog: 
 #   error while loading shared libraries: libglog.so.0: cannot open shared object file
@@ -98,20 +120,22 @@ RUN cd /opt && wget https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz &
 # running `ldconfig` fixes the problem (which is simpler than using $LD_LIBRARY_PATH)
 # TODO: looks like this needs to be run _every_ time a new docker instance is run,
 #       so maybe LD_LIBRARY_PATh is a better approach (or add call to ldconfig in ~/.bashrc)
-RUN ldconfig
+#RUN ldconfig
+
+
 
 # Gflags
-RUN cd /opt && \
-  wget https://github.com/schuhschuh/gflags/archive/master.zip && \
-  unzip master.zip && \
-  cd /opt/gflags-master && \
-  mkdir build && \
-  cd /opt/gflags-master/build && \
-  export CXXFLAGS="-fPIC" && \
-  cmake .. && \ 
-  make VERBOSE=1 && \
-  make && \
-  make install
+#RUN cd /opt && \
+#  wget https://github.com/schuhschuh/gflags/archive/master.zip && \
+#  unzip master.zip && \
+#  cd /opt/gflags-master && \
+#  mkdir build && \
+#  cd /opt/gflags-master/build && \
+#  export CXXFLAGS="-fPIC" && \
+#  cmake .. && \ 
+#  make VERBOSE=1 && \
+#  make && \
+#  make install
 
 # Build Caffe core
 RUN cd /opt/caffe && cp Makefile.config.example Makefile.config
