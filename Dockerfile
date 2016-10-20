@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER shiyongde <shiyongde0000@163.com>
 
-RUN sudo  touch /etc/apt/sources.list.d/aliyun.list && \
+RUN   touch /etc/apt/sources.list.d/aliyun.list && \
 sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse " >> /etc/apt/sources.list.d/aliyun.list && \
 sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
 sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
