@@ -1,6 +1,21 @@
 FROM ubuntu:16.04
 MAINTAINER shiyongde <shiyongde0000@163.com>
 
+RUN sudo  touch /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse " >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list.d/aliyun.list && \
+sudo apt-get update 
+
+
+
 RUN apt-get update && apt-get install -y aptitude && aptitude dist-upgrade --purge -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y sudo ubuntu-gnome-desktop
 
