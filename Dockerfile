@@ -119,7 +119,8 @@ RUN apt-get update && apt-get install -y \
    python-dev \
    python-numpy \
    python-scipy \
-  libopencv-dev
+  libopencv-dev \
+  ldconfig
 
 # Glog 
 #RUN cd /opt && wget https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz && \
